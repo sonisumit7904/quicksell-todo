@@ -1,11 +1,15 @@
-// src/hooks/useKanbanData.js
-import { useState, useEffect } from 'react';
-import { fetchKanbanData } from '../services/api';
+import { useState, useEffect } from "react";
+import { fetchKanbanData } from "../services/api";
 
 export const useKanbanData = () => {
+  // Initialize from localStorage or default to 'status' and 'priority'
+  const [grouping, setGrouping] = useState(
+    () => localStorage.getItem("grouping") || "status"
+  );
+  const [sorting, setSorting] = useState(
+    () => localStorage.getItem("sorting") || "priority"
+  );
   const [data, setData] = useState(null);
-  const [grouping, setGrouping] = useState('status');
-  const [sorting, setSorting] = useState('priority');
 
   useEffect(() => {
     const loadData = async () => {
@@ -20,18 +24,10 @@ export const useKanbanData = () => {
     loadData();
   }, []);
 
+  // Save user preferences to localStorage when they change
   useEffect(() => {
-    // Load user preferences from localStorage
-    const savedGrouping = localStorage.getItem('grouping');
-    const savedSorting = localStorage.getItem('sorting');
-    if (savedGrouping) setGrouping(savedGrouping);
-    if (savedSorting) setSorting(savedSorting);
-  }, []);
-
-  useEffect(() => {
-    // Save user preferences to localStorage
-    localStorage.setItem('grouping', grouping);
-    localStorage.setItem('sorting', sorting);
+    localStorage.setItem("grouping", grouping);
+    localStorage.setItem("sorting", sorting);
   }, [grouping, sorting]);
 
   const updateGrouping = (newGrouping) => {
