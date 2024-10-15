@@ -5,6 +5,7 @@ import Card from "./Card/Card.jsx";
 import "./Column.css";
 
 const Column = ({ title, tickets }) => {
+  
   const getIconPath = (title) => {
     switch (title) {
       // Statuses
@@ -31,13 +32,16 @@ const Column = ({ title, tickets }) => {
         return "./To-do.svg";
 
       // Names mapping
-      case "Ramesh":
-      case "Suresh":
-      case "Shankar Kumar":
-      case "Yogesh":
-      case "Anoop sharma":
-        return "./boy.svg"; // Assuming default profile icon
-
+      case "usr-1":
+        return "./profile1.svg";
+      case "usr-2":
+        return "./profile2.svg";
+      case "usr-3":
+        return "./profile3.svg";
+      case "usr-4":
+        return "./profile4.svg";
+      case "usr-5":
+        return "./profile5.svg";
       default:
         return "./boy.svg"; // Default for unknown titles
     }
