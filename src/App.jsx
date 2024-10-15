@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Navbar from "./components/navbar/navbar";
+import Navbar from "./components/Navbar/Navbar";
 
 import { useKanbanData } from "./hooks/useKanbanData";
 import KanbanBoard from "./components/KanbanBoard";
